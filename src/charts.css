@@ -1,0 +1,398 @@
+* * {
+    margin: 0;
+    padding: 0;
+}
+
+.font_24 {
+    font-size: 24px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.img_24 {
+    height: 24px;
+    width: 24px;
+}
+
+.chars_menu, .chars_menu2 {
+    color: #000000;
+    width: 100%;
+}
+
+.chars_box {
+    position: fixed;
+    left: 60px;
+    background-color: #858585;
+    width: 300px;
+    max-height: 90%;
+    overflow: auto;
+    box-shadow: 0 0 15px #ffffff;
+}
+
+.charts_sxbtn {
+    display: block;
+    position: fixed;
+    width: 15px;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    background: #000;
+    color: #fff
+}
+
+.chars_menu li {
+    display: block;
+    background-color: #F2F2F2;
+    width: 100%;
+    text-align: center;
+    padding: .5em 0;
+    border-bottom: 1px solid #000000
+}
+
+.chars_menu2 li {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: .6em 0;
+}
+
+.chars_insetBtn {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: RGBA(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.chars_insetBtn > a {
+    display: inline-block;
+    margin-top: 30%;
+    padding: .5em .7em;
+    color: #fff;
+    border: 1px solid #ffffff;
+}
+
+.chars_box_img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chars_menu2 li > div {
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border: 1px solid #ffffff;
+    background-color: #fff;
+    position: relative;
+}
+
+.chars_btnGroup {
+    background-color: #000000;
+}
+
+.chars_btnGroup a {
+    display: inline-block;
+    background-color: #010101;
+    color: #ffffff;
+    padding: .5em;
+}
+
+.chars_settingItemBox {
+    width: 100%;
+    background-color: #010101;
+    color: #ffffff;
+}
+
+.chars_settingItemBox > p {
+    padding: .5em;
+    border-bottom: 1px solid #000000;
+    background-color: #555555;
+}
+
+.chars_settingItemBox > p > a {
+    float: right;
+}
+
+.chars_title {
+    background: #555555;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: .5em 1em;
+}
+
+.chars_dataBox {
+    padding: 1em;
+    position: relative;
+}
+
+.chars_itemDataBox {
+    display: inline-block;
+    width: 45%;
+    padding: .5em .3em;
+}
+
+.chars_subTitle {
+    padding: 1em;
+    position: relative;
+}
+
+.chars_toolBox {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: right;
+}
+
+.chars_btn_cancel, .chars_btn_sure {
+    display: inline-block;
+    text-align: center;
+    padding: .5em 0;
+    width: 100px;
+    box-shadow: 0 0 5px #ffffff;
+    border-radius: 10px;
+}
+
+.chars_btn_sure {
+    background-color: cornflowerblue;
+    color: #ffffff;
+}
+
+.chars_btn_cancel {
+    background-color: darkgray;
+    color: #ffffff;
+}
+
+.chars_subTitle h5 {
+    display: inline-block;
+    color: #ffffff;
+    padding: .3em 1em;
+    border-radius: 0 30px 30px 0;
+    background-color: #555555;
+}
+
+.chars_selectBox {
+    width: 100px;
+    padding: .5em;
+}
+
+.chars_choose {
+    transform: rotate(90deg);
+    transition: .3s;
+}
+
+.chars_settingItemBox > ul > li {
+    display: block;
+    padding: 0.3em;
+    width: 100%;
+}
+
+.chars_btnGroup .chars_aChoose {
+    background: yellowgreen;
+}
+
+.chars_menu2 li > div:hover .chars_insetBtn {
+    box-shadow: 0 0 16px #fff;
+    display: block;
+}
+
+.chars_top {
+    line-height: 40px;
+    text-align: center;
+    position: fixed;
+    z-index: 99;
+    background-color: #727272;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #000000;
+}
+
+.chars_chooseData {
+    background: lightgoldenrodyellow;
+    padding: .3em;
+    color: #000000;
+}
+
+.chars_hiddenBox {
+    position: fixed;
+    z-index: 100;
+    background-color: RGBA(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+}
+
+.chars_centerBox {
+    position: relative;
+    width: 800px;
+    min-height: 600px;
+    box-shadow: 0 0 20px #ffffff;
+    border-radius: 20px;
+    margin: 0 auto;
+    background-color: #F2F2F2;
+}
+
+.chars_table {
+    overflow: auto;
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+}
+
+.chars_table tbody td {
+    width: 5em;
+    border: 1px solid #555555;
+}
+
+.chars_right, .chars_left {
+    color: #ffffff;
+    z-index: 99;
+    position: fixed;
+    height: 100%;
+}
+
+.chars_right {
+    border-left: 1px solid #000000;
+    right: 0;
+    width: 200px;
+}
+
+.chars_right_400px {
+    width: 400px;
+}
+
+.chars_left {
+    border-right: 1px solid #000000;
+    left: 0;
+    width: 60px;
+}
+
+.chars_item {
+    width: 600px;
+    height: 300px;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.tz_img {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.chars_textItem {
+    padding: 1em;
+}
+
+.chars_menuToolBox {
+    z-index: 99;
+    font-size: 12px;
+    position: absolute;
+    top: -2em;
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    opacity: 0;
+}
+
+.chars_menuToolBox > li {
+    display: inline-block;
+    padding: .5em;
+}
+
+.chars_menuToolBox > li:hover {
+    background-color: greenyellow;
+    color: black;
+}
+
+.chars_hover {
+    position: relative;
+    text-align: left;
+}
+
+.chars_hover:hover .chars_menuToolBox {
+    opacity: 1;
+}
+
+.chars_plan {
+    background: #ffffff;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    min-height: 100%
+}
+
+.chars_content {
+    width: 600px;
+    height: 700px;
+    position: relative;
+    margin: 40px auto 0;
+}
+
+.chars_bg {
+    background-color: #909090
+}
+
+.chars_black {
+    background-color: #878787;
+}
+
+.dad-noSelect, .dad-noSelect * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: -webkit-grabbing !important;
+    cursor: -moz-grabbing !important;
+}
+
+.dad-container {
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dad-container::after {
+    content: '';
+    clear: both !important;
+    display: block;
+}
+
+.dad-active .dad-draggable-area {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+}
+
+.dads-children-clone {
+    opacity: 0.8;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.dads-children-placeholder {
+    overflow: hidden;
+    position: absolute !important;
+    box-sizing: border-box;
+    border: 4px dashed #639BF6;
+    margin: 5px;
+    text-align: center;
+    color: #639BF6;
+    font-weight: bold;
+}

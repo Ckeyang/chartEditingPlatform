@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="charts.css" rel="stylesheet"/>
+</head>
+<body class="chars_bg">
+<div class="chars_top">
+    <span>admin</span>
+</div>
+<!--菜单控件-->
+<div id="charsMenu" class="chars_left chars_black">
+    <ul class="chars_menu">
+        <li v-for="item in menuList" @click="chooseItem(item.type,$event)">
+            <a v-if="item.img!=''">
+                <img :src="item.img" class="img_24">
+            </a>
+            <a v-if="item.img==''" class="font_24">
+                {{item.name}}
+            </a>
+        </li>
+    </ul>
+</div>
+<!--菜单列表控件-->
+<div id="chartsBox" class="chars_box">
+    <ul class="chars_menu2">
+        <li v-for="item in charsBox">
+            <h4>&nbsp;&nbsp;{{item.type}}&nbsp;&nbsp;</h4>
+            <br/>
+            <hr>
+            <br/>
+            <div v-for="jtem in item.typeItems">
+                <img class="chars_box_img" :src="jtem.img"/>
+                {{jtem.name}}
+                <div class="chars_insetBtn">
+                    <a @click="chooseItem(jtem)">insert</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--leftBtn-->
+<a id="leftBtn" class="charts_sxbtn" style="left:60px;top:60px;display: none">
+    <
+</a>
+
+<div id="chartsSettingBox" v-if="settings.length!=0" class="chars_right chars_black"
+     v-bind:class="{'chars_right_400px':type=='data'}">
+    <div class="chars_btnGroup">
+        <a v-bind:class="{'chars_aChoose':type=='data'}" @click="changeType('data')">编辑数据</a>
+        <a v-bind:class="{'chars_aChoose':type=='setting'}" @click="changeType('setting')">参数设置</a>
+    </div>
+    <div v-if="type=='data'">
+        <div v-if="chooseItem.settings.type=='text'">
+            文本框内容:
+            <textarea v-on:blur="changeData()" v-model="chooseItem.data" style="width:85%;height:80px;">
+
+            </textarea>
+        </div>
+        <div v-if="chooseItem.settings.type=='chart'">
+            <div style="padding: .5em;">
+                x轴:分类轴 &nbsp;&nbsp;&nbsp; y轴:数据轴
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <a class="chars_chooseData" @click="showSettingDataBox()">+选择数据</a>
+            </div>
+            <table class="chars_table">
+                <tbody>
+                <tr v-for="item in chooseItem.tableData">
+                    <td v-for="j in item">{{j}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div v-if="type=='setting'">
+        <div class="chars_settingItemBox" v-for="item in chooseItem.settings.paramSettings">
+            <p>{{item.name}} <a @click="showItem(item)" v-bind:class="{'chars_choose':item.isShow}"> > </a></p>
+            <ul v-show="item.isShow">
+                <li v-for="j in item.params">{{j.name}}:<br/><input type="text" v-on:blur="changeData()"
+                                                                    v-model="j.value"/></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="settingDataBox" class="chars_hiddenBox" v-show="isShow">
+    <div class="chars_centerBox">
+        <div class="chars_title">
+            选择数据
+        </div>
+        <div>
+            <div class="chars_subTitle">
+                <h5>选择数据</h5>
+            </div>
+            <div class="chars_dataBox">
+                <div class="chars_itemDataBox">
+                    选数据结果：
+                    <select class="chars_selectBox" v-model="updateData.aId" @change="getChildren()">
+                        <option v-for="item in settingData" v-bind:value="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="chars_itemDataBox">
+                    选择项：
+                    <select class="chars_selectBox" v-model="updateData.bId" @change="getChildren2()">
+                        <option v-for="item in settingData2" v-bind:value="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chars_subTitle">
+                <h5>字段匹配</h5>
+            </div>
+            <div class="chars_dataBox">
+                <div class="chars_itemDataBox">
+                    分类轴（x轴）：
+                    <select class="chars_selectBox" v-model="updateData.cId">
+                        <option v-for="item in settingData3" v-bind:value="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="chars_itemDataBox">
+                    数值轴（y轴）：
+                    <select class="chars_selectBox" v-model="updateData.dId">
+                        <option v-for="item in settingData3" v-bind:value="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+                <br/><br/>
+                <div class="chars_itemDataBox">
+                    图例：
+                    <select class="chars_selectBox" v-model="updateData.eId">
+                        <option v-for="item in settingData3" v-bind:value="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="chars_toolBox">
+            <a class="chars_btn_sure" @click="getData()">确定</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="chars_btn_cancel" @click="hiddenBox()">取消</a>
+        </div>
+    </div>
+</div>
+<div class="chars_content">
+    <div id="chartsShowBox" class="chars_plan">
+        <div class="chars_hover" v-for="(item,$index) in chartsList">
+            <ul class="chars_menuToolBox">
+                <li class="tz" v-on:onmousedown="showImg($index)"><a>拖拽</a></li>
+                <li @click="chooseThisData(item)"><a>编辑数据</a></li>
+                <li @click="chooseThisSetting(item)"><a>编辑参数</a></li>
+            </ul>
+            <div v-bind:class="{'chars_textItem':item.type==='text','chars_item':item.type==='chart'}"
+                 v-bind:id="$index">
+
+            </div>
+            <img class="tz_img" v-bind:id="'img'+$index"/>
+        </div>
+    </div>
+</div>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/echarts.common.min.js"></script>
+<script src="lib/tz.js"></script>
+<script src="lib/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
