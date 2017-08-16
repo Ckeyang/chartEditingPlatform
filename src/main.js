@@ -1023,6 +1023,4 @@
     var setBoxTop = function (top) {
         $('#chartsBox').css({"top": top});
     };
-
-
 })($);
